@@ -127,14 +127,14 @@ def submit(request, course_id):
 
 
 # <HINT> A example method to collect the selected choices from the exam form from the request object
-#def extract_answers(request):
-#    submitted_anwsers = []
-#    for key in request.POST:
-#        if key.startswith('choice'):
-#            value = request.POST[key]
-#            choice_id = int(value)
-#            submitted_anwsers.append(choice_id)
-#    return submitted_anwsers
+def extract_answers(request):
+    submitted_anwsers = []
+    for key in request.POST:
+        if key.startswith('choice'):
+            value = request.POST[key]
+            choice_id = int(value)
+            submitted_anwsers.append(choice_id)
+    return submitted_anwsers
 
 def show_exam_result(request, course_id, submission_id):
     # Get the course object and submission object based on their ids
@@ -168,7 +168,5 @@ def show_exam_result(request, course_id, submission_id):
 
     # Render the HTML page with the context
     return render(request, 'onlinecourse/exam_result.html', context)
-
-
 
 
